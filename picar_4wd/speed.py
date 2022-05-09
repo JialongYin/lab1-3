@@ -13,6 +13,7 @@ class Speed():
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         self.timer_flag = True
         self.timer = threading.Thread(target=self.fun_timer, name="Thread1")
+        self.my_test = "my test code"
 
     def start(self):
         self.timer.start()
@@ -41,33 +42,33 @@ class Speed():
 
 
 def test1():
-    # import fwd as nc 
+    # import fwd as nc
     fc.forward(100)
 
     speed3 = Speed(25)
-    speed4 = Speed(4) 
+    speed4 = Speed(4)
     speed3.start()
     speed4.start()
     try:
         # nc.stop()
         while 1:
-            # speed_counter 
+            # speed_counter
             # = 0
             print(speed3())
             print(speed4())
-            print(" ") 
+            print(" ")
             time.sleep(0.5)
     finally:
         speed3.deinit()
         speed4.deinit()
-        fc.stop() 
+        fc.stop()
 
 def test2():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     while True:
         print(GPIO.input(12))
-        time.sleep(0.001) 
+        time.sleep(0.001)
 
 def test3():
     speed4 = Speed(25)
@@ -85,6 +86,3 @@ def test3():
     fc.stop()
 if __name__ == "__main__":
     test3()
-        
-
-    

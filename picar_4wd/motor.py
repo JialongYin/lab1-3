@@ -9,7 +9,7 @@ class Motor():
         self._is_reversed = is_reversed
         self._power = 0
         self._except_power = 0
-    
+
     # def start_timer(self):
     #     self.t = threading.Timer(self.DELAY, self.adder_thread)
     #     self.t.start()
@@ -24,9 +24,9 @@ class Motor():
             power = int(power /2 ) + 50
         power = power
 
-        direction = direction if not self._is_reversed else not direction  
+        direction = direction if not self._is_reversed else not direction
         self.dir_pin.value(direction)
-            
+
         self.pwm_pin.pulse_width_percent(power)
 
 #     def adder_thread(self):
